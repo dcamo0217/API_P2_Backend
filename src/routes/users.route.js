@@ -5,7 +5,7 @@ import validateToken from "../middlewares/validateToken.middleware.js";
 
 const router = express.Router();
 
-router.post('/', UserController.register);
+
 router.post('/login', UserController.login);
 
 router.post('/', UserController.register);
