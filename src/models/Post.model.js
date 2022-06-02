@@ -1,31 +1,25 @@
 import mongoose from 'mongoose';
 
 const schema = new mongoose.Schema({
-  username: {
+  img_url: {
     type: String,
-    unique: true,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
-  birthdate: {
-    type: Date,
     required: true,
   },
   bio: {
     type: String,
     required: true,
   },
-
-
+  author: {
+    type: String,
+    required: true,
+  },
+  user_id: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: 'User',
+  }
 });
 
-const User = mongoose.model('User', schema);
+const Post = mongoose.model('Post', schema);
 
-export default User;
+export default Post;

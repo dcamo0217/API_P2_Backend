@@ -4,10 +4,14 @@ const error = (error, req, res, next) => {
   const err_code = error.code || -1;
 
   switch (err_code) {
-    case 1:
-      return res.status(400).json({
-        message: `User or password incorrect`,
-      });
+    case 400:
+      return res.status(400).json({ ...error });
+
+    case 401:
+      return res.status(401).json({ ...error });
+
+    case 404:
+      return res.status(404).json({ ...error });
 
     case 11000:
       const field = Object.keys(error.keyValue);

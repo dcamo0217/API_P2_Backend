@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   "dependencies": {
     "@shelf/jest-mongodb": "^3.0.1",
     "axios": "^0.26.1",
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
@@ -28,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/dcamo0217/API_P2_Backend/issues"
   },
-  "homepage": "https://github.com/dcamo0217/API_P2_Backend#readme"
+  "homepage": "https://github.com/dcamo0217/API_P2_Backend#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
 }
