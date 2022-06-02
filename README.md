@@ -8,20 +8,18 @@ Desarrollen el backend para un clon de Twitter + Instagram.
 
 ## Endpoints
 
-- [x] Endpoint de login con usuario y contraseña
-
+- [ ] Endpoint de login con usuario y contraseña
   - Debe generar un JWT de sesión
   - Metodo: POST
   - Ruta: '/users/login'
   - Body: { username, password }
   - Response: { token }
-
-- [x] Endpoint de login con JWT token
+- [ ] Endpoint de login con JWT token
   - Metodo: POST
   - Ruta: '/users/login'
   - Body: { token }
   - Response: {}
-- [x] Endpoint de registro de usuario
+- [ ] Endpoint de registro de usuario
 
   - Debe generar un JWT de sesión
   - Metodo: POST
@@ -29,7 +27,7 @@ Desarrollen el backend para un clon de Twitter + Instagram.
   - Body: { username, password, email, birthdate, bio }
   - Response: { token }
 
-- [x] Endpoint de informacion de usuario
+- [ ] Endpoint de informacion de usuario
   - No debe tener información privada del usuario (contraseña, fecha de cumpleaños)
   - Debe incluir el numero de publicaciones que el usuario ha dado me gusta, calculado on-demand
   - Debe incluir el numero de publicaciones que el usuario ha subido, calculado on-demand
@@ -39,7 +37,7 @@ Desarrollen el backend para un clon de Twitter + Instagram.
   - Ruta: '/users/'
   - Query: { user_id }
   - Response: { username, email, bio, liked_count, posts_count, followers_count, followed_count }
-- [x] Endpoint de publicaciones que un usuario ha subido
+- [ ] Endpoint de publicaciones que un usuario ha subido
   - Solo está permitido si el usuario esta siguiendo al usuario, a menos que sea el usuario mismo
   - Metodo: GET
   - Ruta: '/posts/'
@@ -71,13 +69,13 @@ Desarrollen el backend para un clon de Twitter + Instagram.
   - Query: { user_id }
   - Response: { users }
 
-- [x] Endpoint de solicitar seguir a un usuario
+- [ ] Endpoint de solicitar seguir a un usuario
   - Solo permitido si el usuario ya no está siguiendo al usuario
   - Metodo: POST
   - Ruta: '/follows/request'
   - Body: { user_id }
   - Response: {}
-- [x] Endpoint de aceptar o rechazar solicitud de seguir
+- [ ] Endpoint de aceptar o rechazar solicitud de seguir
 
   - Solo está permitido si el usuario es el que recibe la solicitud
   - Metodo: POST
@@ -94,12 +92,12 @@ Desarrollen el backend para un clon de Twitter + Instagram.
   - Body: { page }
   - Response: { posts }
 
-- [x] Endpoint de crear/subir publicacion
+- [ ] Endpoint de crear/subir publicacion
   - Metodo: POST
   - Ruta: '/posts/'
   - Body: { img_url, bio, author }
   - Response: { }
-- [x] Endpoint de informacion de publicacion
+- [ ] Endpoint de informacion de publicacion
 
   - Debe incluir el numero de likes de la publicacion, calculado on-demand
   - Debe incluir los comentarios de la publicacion, calculado on-demand
@@ -108,17 +106,17 @@ Desarrollen el backend para un clon de Twitter + Instagram.
   - Body: { post_id }
   - Response: { img_url, bio, author, likes, comments }
 
-- [x] Endpoint de dar me gusta a una publicación
+- [ ] Endpoint de dar me gusta a una publicación
   - Metodo: POST
   - Ruta: '/posts/like'
   - Body: { post_id }
   - Response: { }
-- [x] Endpoint de guardar una publicación
+- [ ] Endpoint de guardar una publicación
   - Metodo: POST
   - Ruta: '/posts/save'
   - Body: { post_id }
   - Response: { }
-- [x] Endpoint de comentar en una publicación
+- [ ] Endpoint de comentar en una publicación
   - Metodo: POST
   - Ruta: '/posts/'
   - Body: { post_id, comment }
