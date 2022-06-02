@@ -45,25 +45,25 @@ Desarrollen el backend para un clon de Twitter + Instagram.
   - Ruta: '/posts/'
   - Query: { author }
   - Response: { posts }
-- [ ] Endpoint de publicaciones que un usuario ha dado "me gusta"
+- [x] Endpoint de publicaciones que un usuario ha dado "me gusta"
   - Solo está permitido si el usuario permite ver sus "me gusta", a menos que sea el usuario mismo
   - Metodo: GET
   - Ruta: '/posts/liked-by'
   - Query: { user_id }
   - Response: { posts }
-- [ ] Endpoint de publicaciones que un usuario ha guardado
+- [x] Endpoint de publicaciones que un usuario ha guardado
   - Solo está permitido para el usuario mismo
   - Metodo: GET
   - Ruta: '/posts/saved-by'
   - Query: { }
   - Response: { posts }
-- [ ] Endpoint de usuarios seguidos por un usuario
+- [x] Endpoint de usuarios seguidos por un usuario
   - Solo está permitido si el usuario esta siguiendo al usuario, a menos que sea el usuario mismo
   - Metodo: GET
   - Ruta: '/follows/following'
   - Query: { user_id }
   - Response: { users }
-- [ ] Endpoint de seguidores de un usuario
+- [x] Endpoint de seguidores de un usuario
 
   - Solo está permitido si el usuario esta siguiendo al usuario, a menos que sea el usuario mismo
   - Metodo: GET

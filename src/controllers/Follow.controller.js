@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import Follow from "../models/Follow.model.js";
 
 const requestFollow = async (req, res, next) => {
@@ -82,4 +83,68 @@ const responseFollow = async (req, res, next) => {
 }
 
 
-export default { requestFollow, responseFollow };
+const getFollows = async (req, res, next, type) => {
+    try {
+        const { user_id } = req.query;
+        const { token_data } = req.body;
+        const { user_id: current_user_id } = token_data;
+
+        if (!user_id && !current_user_id) {
+            return res.status(400).json({ error: 'Missing parameters' });
+        }
+
+        const pipeline = [
+            {
+                '$match': {
+                    'follower_id': mongoose.Types.ObjectId(user_id),
+                    'isAccepted': true
+                }
+            }, {
+                '$lookup': {
+                    'from': 'users',
+                    'localField': 'followed_id',
+                    'foreignField': '_id',
+                    'as': 'user'
+                }
+            }, {
+                '$unwind': '$user'
+            }, {
+                '$project': {
+                    'user': 1,
+                    '_id': 0
+                }
+            },
+        ]
+
+        if (type === "followers") {
+            pipeline[0] = {
+                '$match': {
+                    'followed_id': mongoose.Types.ObjectId(user_id),
+                    'isAccepted': true
+                }
+            }
+        }
+
+        const follows = await Follow.aggregate(pipeline);
+
+        return res.status(200).json({ follows });
+
+    } catch (error) {
+        console.log(error);
+        next({
+            code: 500,
+            error
+        })
+    }
+}
+
+const getUserFollowers = async (req, res, next) => {
+    getFollows(req, res, next, "followers");
+}
+
+const getUserFollowings = async (req, res, next) => {
+    getFollows(req, res, next, "followings");
+}
+
+
+export default { requestFollow, responseFollow, getUserFollowers, getUserFollowings };
