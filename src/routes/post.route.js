@@ -11,5 +11,6 @@ router.get('/', PostController.getPost);
 router.post('/like', validateToken, ActivityRegisterController.createLike);
 router.post('/save', validateToken, ActivityRegisterController.createSave);
 router.post('/comment', validateToken, ActivityRegisterController.createComment);
+router.get('/timeline', validateToken, PostController.getTimeline);
 
 export default router;
