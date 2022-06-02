@@ -89,6 +89,36 @@ const register = async (req, res, next) => {
   }
 };
 
+const userInformation = async (req, res, next) => {
+  const { user_id } = req.query;
+
+  if (user_id) {
+    try {
+      const user = await UserModel.findById(user_id);
+      if (!user) return next({ code: 404, message: 'User not found' });
+
+      /* TODO: calcular propiedades on demand */
+
+      return res.status(200).json({
+        ...user.toObject(),
+        _id: undefined,
+        __v: undefined,
+        password: undefined,
+        birthdate: undefined,
+        liked_count: 0,
+        posts_count: 0,
+        followers_count: 0,
+        followed_count: 0,
+      });
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  } else {
+    next({ code: 400, message: 'Missing param user_id' });
+  }
+};
+
 // get user_id by token
 const getUserIDByToken = async (token) => {
   try {
@@ -110,4 +140,10 @@ const getUserByToken = async (token) => {
   }
 };
 
-export default { login, register, getUserIDByToken, getUserByToken };
+export default {
+  login,
+  register,
+  getUserIDByToken,
+  getUserByToken,
+  userInformation,
+};
