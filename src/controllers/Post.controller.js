@@ -2,16 +2,18 @@ import PostModel from '../models/Post.model.js';
 
 //Create post
 const createPost = async (req, res, next) => {
-  const { img_url, bio, author } = req.body;
+  const { img_url, bio, author, token_data } = req.body;
+
   if (img_url && bio && author) {
     try {
       const post = new PostModel({
         img_url,
         bio,
         author,
+        user_id: token_data.user_id,
       });
       await post.save();
-      return res.status(200).json({});
+      return res.status(200).json({ "message": "Post created" });
     } catch (error) {
       next(error);
     }

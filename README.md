@@ -29,7 +29,7 @@ Desarrollen el backend para un clon de Twitter + Instagram.
   - Body: { username, password, email, birthdate, bio }
   - Response: { token }
 
-- [ ] Endpoint de informacion de usuario
+- [x] Endpoint de informacion de usuario
   - No debe tener información privada del usuario (contraseña, fecha de cumpleaños)
   - Debe incluir el numero de publicaciones que el usuario ha dado me gusta, calculado on-demand
   - Debe incluir el numero de publicaciones que el usuario ha subido, calculado on-demand
@@ -71,13 +71,13 @@ Desarrollen el backend para un clon de Twitter + Instagram.
   - Query: { user_id }
   - Response: { users }
 
-- [ ] Endpoint de solicitar seguir a un usuario
+- [x] Endpoint de solicitar seguir a un usuario
   - Solo permitido si el usuario ya no está siguiendo al usuario
   - Metodo: POST
   - Ruta: '/follows/request'
   - Body: { user_id }
   - Response: {}
-- [ ] Endpoint de aceptar o rechazar solicitud de seguir
+- [x] Endpoint de aceptar o rechazar solicitud de seguir
 
   - Solo está permitido si el usuario es el que recibe la solicitud
   - Metodo: POST

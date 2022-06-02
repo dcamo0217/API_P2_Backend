@@ -7,6 +7,7 @@ import cors from 'cors';
 import users from './src/routes/users.route.js';
 import posts from './src/routes/post.route.js';
 import unknown from './src/routes/unknown.route.js';
+import follow from './src/routes/follow.route.js';
 import error from './src/routes/error.route.js';
 
 const PORT = process.env.PORT || 3000;
@@ -28,7 +29,7 @@ app.use(cors());
 
 app.use('/users', users);
 app.use('/posts', posts);
-
+app.use('/follows', follow)
 app.get('/', (req, res) => {
   res.json({ message: 'PICsHAr API' });
 });
