@@ -1,5 +1,5 @@
 # Picshar
-Por favor, revisar los cambios en dev. Tuvimos un error al intentar hacer merge a main y dejó de servir.
+## Por favor, revisar los cambios en dev. Tuvimos un error al intentar hacer merge a main y dejó de servir.
 
 Desarrollen el backend para un clon de Twitter + Instagram.
 
