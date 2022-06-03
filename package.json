@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "jest",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js ",
     "start": "nodemon index.js"
   },
   "repository": {
@@ -24,7 +24,8 @@
     "jest": "^28.1.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "supertest": "^6.2.3"
   },
   "bugs": {
     "url": "https://github.com/dcamo0217/API_P2_Backend/issues"

@@ -6,7 +6,7 @@ import Follow from '../models/Follow.model.js';
 import Post from '../models/Post.model.js';
 import ActivityRegister from '../models/ActivityRegister.model.js';
 
-const salt = process.env.SALT;
+const salt = +process.env.SALT;
 
 const login = async (req, res, next) => {
   const { token } = req.body;
@@ -65,8 +65,8 @@ const register = async (req, res, next) => {
 
   if (username && password && email && birthdate && bio) {
     try {
-      const salt = await bcrypt.genSalt(salt);
-      const hashPassword = await bcrypt.hash(password, salt);
+      const salsita = await bcrypt.genSalt(salt);
+      const hashPassword = await bcrypt.hash(password, salsita);
 
       const user = new UserModel({
         username,
@@ -98,14 +98,28 @@ const getUserInfo = async (req, res, next) => {
   try {
     const { user_id } = req.query;
 
-    const user = await UserModel.findById(user_id, { password: 0, __v: 0, birthdate: 0, _id: 0 });
+    const user = await UserModel.findById(user_id, {
+      password: 0,
+      __v: 0,
+      birthdate: 0,
+      _id: 0,
+    });
 
     if (!user) return next({ code: 404 });
 
-    const followersCount = await Follow.countDocuments({ followed_id: user_id, isAccepted: true });
-    const followedCount = await Follow.countDocuments({ follower_id: user_id, isAccepted: true });
+    const followersCount = await Follow.countDocuments({
+      followed_id: user_id,
+      isAccepted: true,
+    });
+    const followedCount = await Follow.countDocuments({
+      follower_id: user_id,
+      isAccepted: true,
+    });
     const postCount = await Post.countDocuments({ user_id });
-    const likedCount = await ActivityRegister.countDocuments({ user_id, action: "like" });
+    const likedCount = await ActivityRegister.countDocuments({
+      user_id,
+      action: 'like',
+    });
 
     const userInfo = {
       ...user._doc,
@@ -120,7 +134,7 @@ const getUserInfo = async (req, res, next) => {
     console.log(error);
     next({
       code: 500,
-      error
+      error,
     });
   }
 };
